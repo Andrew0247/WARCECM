@@ -1,28 +1,28 @@
 # WARCECM
-Proyecto de un Aplicativo Web el cual lleva un registro de empleados, los respectivos jefes de los empleados, y los contratos externos a la empresa.
+Project of a Web Application which keeps a record of employees, the respective heads of employees, and external contracts to the company.
 
-El siguiente proyecto esta realizado con el Framework Django (https://docs.djangoproject.com/en/3.0/). En este proyecto se hace uso de la biblioteca "bootstrap_modal_forms" para realizar el manejo de Modales, esta biblioteca se la puede descargar de la siguiente forma:
+The following project is done with the <a href="https://docs.djangoproject.com/en/3.0/">Django Framework</a>. Postgresql is used as a database manager for the respective storage of the different registers. In this project, the "bootstrap_modal_forms" library is used to handle Modals. This library can be downloaded as follows:
 
 <Code>pip install bootstrap_modal_forms</Code>
 
-Tambien se hace uso de Bootstrap 4.0, el cual se lo puede descargar o encontrar en el siguiente enlace <a href="https://getbootstrap.com/">Bootstrap</a>.
+Bootstrap 4.0 is also used, which can be downloaded or found at the following link <a href="https://getbootstrap.com/">Bootstrap</a>.
 
-Al igual se hace un respectivo uso de JQuery, tambien se usa bibliotecas de jquery tales como <a href="https://cdnjs.com/libraries/jquery-datetimepicker">datetimepicker</a>, la cual es para personalizar la insercion de las fechas usando un calendario.
+Likewise, a respective use of JQuery is made, jquery libraries such as <a href="https://cdnjs.com/libraries/jquery-datetimepicker">datetimepicker</a> are also used, which is to personalize the insertion of the dates using a calendar.
 
-Para el manejo de los usuarios, se utiliza el modelo que el mismo Framework ofrece y genera. El cual se importa de la siguiente manera:
+For the management of users, the model that the same Framework offers and generates is used. Which is imported as follows:
 
 <Code>from django.contrib.auth.models import User</Code>
 
-La carpeta del proyecto es la que tiene por nombre RegContrac, la cual contiene diferentes carpetas: 
+The project folder is the one named RegContrac, which contains different folders: 
 <ul>
-  <li>Bootstrap, la cual contiene archivos locales para utilizar Bootstrap.</li>
-  <li>Portafolio, donde se encuentran diferentes carpetas en las que se encuentran las diferentes imagenes, archivos css, js, fuentes, etc.</li>
-  <li>Archivos, en donde se almacenan los diferentes documentos que se suben utilizando los formularios.</li>
-  <li>RegContrac, la cual es la carpeta donde estan las diferentes configuraciones propiamente del proyecto y en donde añadimos las aplicaciones que necesitamos para nuestro proyecto, estas estan en el archivo <Code>settings.py</Code>. Tambien las URLs para redireccionar a cada aplicacion, las cuales estan en el archivo <Code>urls.py</Code>
-  <li>LRUsuarios, se configura toda la parte de los usuarios.</li>
-  <li>REGContracEx, donde se realizan las configuraciones para la aplicacion que maneja la parte de los contratos externos.</li>
-  <li>REGEmpleados, donde esta toda la parte de la configuracion de la aplicacion para el manejo de los Empleados y su respectivo registro.</li>
-  <li>REGJefes, donde se configura todo el registro de los Jefes de los Empleados.</li>
+  <li>Bootstrap, which contains local files to use Bootstrap.</li>
+  <li>Portafolio, where there are different folders containing the different images, css files, js, fonts, etc.</li>
+  <li>Archivos, where the different documents that are uploaded using the forms are stored.</li>
+  <li>RegContrac, which is the folder where the different settings of the project are and where we add the applications we need for our project, they are in the file <Code>settings.py</Code>. Also the URLs to redirect to each application, which are in the file <Code>urls.py</Code>.
+  <li>LRUsuarios, all the users part is configured.</li>
+  <li>REGContracEx, where the settings are made for the application that handles the part of external contracts.</li>
+  <li>REGEmpleados, where is all the part of the configuration of the application for the management of the Employees and their respective registration.</li>
+  <li>REGJefes, where the entire registry of the Employees' Heads is configured.</li>
 </ul>
 
-Tambien se hace uso de un metodo de Django el cual es <Code>send_mail()</Code>, este es importado con la siguiente instruccion <Code>from django.core.mail import send_mail</Code> en nuestro archivo <Code>views.py</Code>.
+We also make use of a Django method which is <Code>send_mail()</Code>, this is imported with the following instruction <Code>from django.core.mail import send_mail</Code> in our <Code>views.py</Code> file. Which is used to give notifications by email.
