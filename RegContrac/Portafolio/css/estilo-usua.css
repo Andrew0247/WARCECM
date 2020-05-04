@@ -1,0 +1,130 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    overflow-x: hidden;
+    color: #707172;
+    background-color: #666;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#cuerpo-pag {
+    min-height: 100%;
+    position: relative;
+}
+
+header {
+	width: 100%;
+	float: left;
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b2afaf',GradientType=0 );
+	box-shadow: 0px 3px 5px ;
+		-moz-box-shadow: 0px 3px 5px ;
+		-webkit-box-shadow: 0px 3px 5px ;
+}
+
+#hd {
+	width: 960px;
+	margin: auto;
+}
+
+#hd .logo {
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin: 0px 10px 10px 0px;
+}
+
+#hd h2 {
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    margin-top: 15px;
+    color: azure;
+}
+
+#hd h2 p {
+    display: inline;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    margin: 15px;
+    padding: 5px 8px;
+    border-radius: 8px;
+		-moz-border-radius: 8px;
+		-webkit-border-radius: 8px;
+}
+
+#hd h2 p:hover {
+    font-weight: lighter;
+}
+
+.tm-bg-black-transparent {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+h5 {
+    color: azure;
+}
+
+.parallax-window {
+    min-height: 100%;
+    background: transparent;
+    background-attachment: fixed;
+}
+
+.custom-control-label {
+    color: ivory;
+}
+
+#contenido {
+    padding-bottom: 0px;
+}
+
+#contenedor1 {
+    padding-bottom: 66px;
+}
+
+footer {
+    color: white;
+    background-color: black;
+    width: 100%;
+    height: 75px;
+    position: absolute;
+    box-shadow: 0px 2px 2px #000;
+		-moz-box-shadow: 0px 2px 2px #000;
+		-webkit-box-shadow: 0px 2px 2px #000;
+}
+
+#bs-fo {
+    margin: 5px;
+}
+
+#cl-1 {
+    float: right;
+    font-size: 12px;
+    margin: 0 2em 2px auto;
+}
+
+.creador-link-2 {
+    color: white;
+}
+  
+.creador-link-2:hover {
+    color: #BDB76B;
+    text-decoration: none;
+}
+
+.creador-link {
+    color: white;
+}
+  
+.creador-link:hover {
+    color: #F93;
+    text-decoration: none;
+}
