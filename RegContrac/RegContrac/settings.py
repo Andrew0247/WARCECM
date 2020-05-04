@@ -135,7 +135,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     os.path.join(BASE_DIR, 'Bootstrap'),
-    ("portafolio", "C:/Users/57323/Desktop/Practica/ProyectoDjango/RegContrac/Portafolio"),
+    ("portafolio", "/Desktop/ProyectoDjango/RegContrac/Portafolio"), # Configure your path to add the "Portafolio" folder to the static files
 ]
 
 
@@ -150,5 +150,5 @@ EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_USE_TLS=True
 EMAIL_PORT=587
-EMAIL_HOST_USER="bricea881@gmail.com"
-EMAIL_HOST_PASSWORD="amoamifamilia0202"
+EMAIL_HOST_USER="" # Set up your email username
+EMAIL_HOST_PASSWORD="" # Set up your email password
