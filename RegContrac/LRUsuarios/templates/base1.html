@@ -1,0 +1,61 @@
+<!-- 
+###########################################
+########### Author Andres B.R. ############
+###########      GuiHub        ############
+###### https://github.com/Andrew0247 ######
+########################################### -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+        <link rel="stylesheet" href="{% static 'portafolio/css/bootstrap.min.css'%}" >
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}" >
+        <link rel="StyleSheet" href="{% static 'portafolio/css/login_register.css' %}">
+        <link rel="StyleSheet" href="{% static 'portafolio/css/estilo-usua.css' %}">
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'portafolio/js/jquery.easing.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/parallax.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/logeo-registro.js' %}"></script>
+        <title>Usuarios</title>
+    </head>
+    <body>
+        <div id="cuerpo-pag">
+            <header>
+                <nav class="navbar navbar-dark bg-dark">
+                    <div id="hd">
+                        <img class="logo" src="{% static 'portafolio/img/img-ini-reg-emp.png' %}" alt="My image">
+                        <h2>WARCECM <p>{% block titulo %} {% endblock titulo %} </p> </h2>
+                    </div>
+                </nav>
+            </header>
+            <div id="contenido">
+                <div
+                    class="parallax-window"
+                    data-parallax="scroll"
+                    data-image-src="{% static 'portafolio/img/Fondo-empleados.jpeg' %}">
+                    <div id="contenedor1" class="container">
+                    {% block cuerpo %}
+
+                    {% endblock cuerpo %}
+                    </div>
+                </div>
+            </div>
+            
+            <footer class="text-center text-white small">
+                <section id="bs-fo">
+                    <p class="mb--0 mb-2">Copyright 2020 Registro</p>
+                    <p class="mb-0">
+                        <a rel="nofollow" href="http://www.santiago-putumayo.gov.co/" class="creador-link" id="cl-2">Alcaldia Santiago Putumayo</a>
+                    </p>
+                    <a rel="nofollow" href="https://github.com/Andrew0247" target="_blank" class="creador-link-2" id="cl-1">Creado por Andrés B.R.</a>
+                </section>
+            </footer>
+        </div>
+    </body>
+</html>

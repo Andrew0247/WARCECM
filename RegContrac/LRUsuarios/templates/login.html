@@ -1,0 +1,54 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block titulo %}Inicio De Sesión{% endblock titulo %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col mx-auto" id="rg-ad">
+        <div class="card card-signin flex-row my-5 tm-bg-black-transparent">
+            <div class="card-body ">
+                <h5 class="card-title text-center">Inicio de Sesión (Contratos Externos)</h5>
+                <form class="form-signin" method="POST">
+                    {% csrf_token %}
+                    {{ form2.non_field_errors }}
+                    <div class="form-label-group">                            
+                        {{ form2.username }}
+                        <label for="{{ form2.username.id_for_label }}">Usuario</label>
+                    </div>
+                    <div class="form-label-group">                                    
+                        {{ form2.password }}
+                        <label for="{{ form2.password.id_for_label }}">Contraseña</label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="admins">Iniciar Sesión</button>
+                    <div class="text-center">
+                        <a class="d-block text-center mt-2 small" href="/usuarios/register/">Registrar usuario</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col col-lg-2"> </div>
+    <div class="col mx-auto" id="rg-us">
+        <div class="card card-signin flex-row my-5 tm-bg-black-transparent">
+            <div class="card-body">
+                <h5 class="card-title text-center">Inicio de Sesión (Jefes y Empleados)</h5>
+                <form class="form-signin" method="POST">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="form-label-group">                            
+                        {{ form.username }}
+                        <label for="{{ form.username.id_for_label }}">Usuario</label>
+                    </div>
+                    <div class="form-label-group">                                    
+                        {{ form.password }}
+                        <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                    </div>
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="usuarios">Iniciar Sesión</button>
+                    <div class="text-center">
+                        <a class="d-block text-center mt-2 small" href="/usuarios/register/">Registrar usuario</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}
