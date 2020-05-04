@@ -1,0 +1,131 @@
+<!-- 
+###########################################
+########### Author Andres B.R. ############
+###########      GuiHub        ############
+###### https://github.com/Andrew0247 ######
+########################################### -->
+
+{% load static %}
+{% if user.is_authenticated %}
+    <!DOCTYPE html>
+    <html lang="es">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <title>Jefes Empleados</title>
+
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+        <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/all.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/empleado-estilos.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'portafolio/slick/slick.css' %}"/>    
+        <link rel="stylesheet" type="text/css" href="{% static 'portafolio/slick/slick-theme.css' %}"/>    
+        <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />  
+        <script src="https://code.jquery.com/jquery-3.5.0.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/empleados-scripts.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/jquery.singlePageNav.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/parallax.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/slick/slick.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/jquery.dataTables.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'portafolio/js/push.min.js' %}"></script>
+      </head>
+      <body>
+        
+        <main class="container-fluid">
+          <div class="row">        
+              <nav id="tmSidebar" class="tm-bg-black-transparent tm-sidebar">
+                <button class="navbar-toggler" type="button" aria-label="Toggle navigation">
+                  <i class="fas fa-bars"></i>
+                </button>
+                <div class="tm-sidebar-sticky">
+                  <div class="tm-brand-box">
+                    <div class="tm-double-border-1">
+                      <div class="tm-double-border-2">
+                        {% for empleado in empleados %}
+                            {% if request.user.username == empleado.cedu_jefe %}
+                            <h1 class="tm-brand text-uppercase">{{ empleado.nom_jefe }}</h1>
+                            {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+
+                  <ul class="nav flex-column text-uppercase text-right tm-main-nav">
+                    <li class="nav-item">
+                      <a href="{% url 'jefe' %}" class="nav-link active">
+                        <span class="d-inline-block mr-3">Datos Básicos</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'listar_contratacion_jefe' %}" class="nav-link">
+                        <span class="d-inline-block mr-3">Contratación</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'listar_educacion_jefe' %}" class="nav-link">
+                        <span class="d-inline-block mr-3">Educación</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'listar_experiencia_jefe' %}" class="nav-link">
+                        <span class="d-inline-block mr-3">Experiencia</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'listar_documentosoporte_jefe' %}" class="nav-link">
+                        <span class="d-inline-block mr-3">Documentos Soporte</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="{% url 'listar_valoracion_jefe' %}" class="nav-link">
+                        <span class="d-inline-block mr-3">Valoración Empleados</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/usuarios/logout/" class="nav-link">
+                        <span class="d-inline-block mr-3">Cerrar Sesión</span>
+                        <span class="d-inline-block tm-white-rect"></span>
+                      </a>
+                    </li>
+                  </ul>
+
+                  <footer class="text-center text-white small">
+                    <p class="mb--0 mb-2">Copyright 2020 Empleados</p>
+                    <p class="mb-0">
+                      <a rel="nofollow" href="http://www.santiago-putumayo.gov.co/" class="tm-footer-link">Alcaldia Santiago Putumayo</a>
+                    </p>
+                    <a rel="nofollow" href="https://github.com/Andrew0247" target="_blank" class="creador-link-2" id="cl-1">Creado por Andrés B.R.</a>
+                  </footer>
+                </div>
+              </nav>
+              
+              <main role="main" class="ml-sm-auto col-12">
+                <div
+                  class="parallax-window"
+                  data-parallax="scroll"
+                  data-image-src="{% static 'portafolio/img/Fondo-empleados.jpeg' %}">
+                  <div class="tm-section-wrap">
+                    {% block cuerpo %}
+
+                    {% endblock cuerpo %}
+                  </div>            
+                </div>
+            </main>        
+          </div>
+        </main>
+      </body>
+    </html>
+{% endif %}
