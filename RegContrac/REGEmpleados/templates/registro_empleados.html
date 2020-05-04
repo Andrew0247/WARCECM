@@ -1,0 +1,50 @@
+{% extends "base1.html" %}
+{% load static %}
+{% block titulo %}Registro empleados{% endblock titulo %}
+{% block cuerpo %}
+<div class="row">
+    <div class="col-lg-8 col-xl-6 mx-auto" id="rg-ad">
+        <div class="card card-signin flex-row my-5 tm-bg-black-transparent">
+            <div class="card-body">
+                <h5 class="card-title text-center">Registro Empleado</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <div class="form-label-group">                            
+                        {{ form.nom_empleado }}
+                        <label for="{{ form.nom_empleado.id_for_label }}">Nombre</label>
+                    </div>
+                    <div class="form-label-group">                            
+                        {{ form.ape_empleado }}
+                        <label for="{{ form.ape_empleado.id_for_label }}">Apellido</label>
+                    </div>
+                    <div class="form-label-group">                            
+                        {{ form.cedu_empleado }}
+                        <label for="{{ form.cedu_empleado.id_for_label }}">Cedula</label>
+                    </div>
+                    <div class="form-label-group">                            
+                        {{ form.celu_empleado }}
+                        <label for="{{ form.celu_empleado.id_for_label }}">Celular</label>
+                    </div>
+                    <div class="form-label-group">                            
+                        {{ form.email_empleado }}
+                        <label for="{{ form.email_empleado.id_for_label }}">Email</label>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-3">                            
+                        {{ form.estado_empleado }}
+                        <label class="custom-control-label" for="{{ form.estado_empleado.id_for_label }}">Actualmente Empleado</label>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Registrarse</button>
+
+                    <div class="text-center">
+                        <a class="d-block text-center mt-2 small" href="/usuarios/login/">Iniciar sesión</a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock cuerpo %}
+

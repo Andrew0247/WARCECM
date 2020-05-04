@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block cuerpo %}
+<section id="intro" class="tm-section">
+  <div class="tm-bg-white-transparent tm-intro">
+    <h2 class="tm-section-title mb-5 text-uppercase tm-color-primary text-center">Datos Básicos</h2>
+    {% for empleado in empleados %}
+        {% if request.user.username == empleado.cedu_empleado %}
+        <p class="p-2 mb-2 bg-secondary text-white text-center">{{ empleado.nom_empleado }} {{ empleado.ape_empleado }}</p>
+        <p class="p-2 mb-2 bg-secondary text-white text-center">{{ empleado.cedu_empleado }}</p>
+        <p class="p-2 mb-2 bg-secondary text-white text-center">{{ empleado.celu_empleado }}</p>
+        <p class="p-2 mb-2 bg-secondary text-white text-center">{{ empleado.email_empleado }}</p>
+        
+        <div class="d-flex justify-content-center">
+          <button onclick="return abrir_modal('{% url 'actualizar_empleado' empleado.pk %}')" class="btn btn-outline-primary btn-lg btn-block" type="button" name="button">
+            <i class="fas fa-edit"></i>
+          </button>
+        </div>
+        {% endif %}
+    {% endfor %}                        
+  </div>
+</section>
+<div id="popup" class="modal fade" role="dialog">
+
+</div>
+<script type="text/javascript">
+  Push.create('hola');
+  var $ =jQuery.noConflict();
+  function abrir_modal(url)
+  {
+    window.$('#popup').load(url, function()
+      {
+        $(this).modal('show');
+      });
+      return false;
+  }
+
+  function cerrar_modal()
+  {
+    $('#popup').modal('hide');
+      return false;
+  }
+  
+  $(document).ready(function()
+  {
+    var table = $('#tabla').dataTable( {
+      "language": {
+        url: "/Portafolio/localizacion/es_ES.json"
+      }
+    } );
+  });
+</script>
+{% endblock cuerpo %}
