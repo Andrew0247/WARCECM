@@ -4,70 +4,57 @@
 	<div class="col-lg tm-bg-white-transparent tm-section">
 		<div class="row justify-content-md-center tm-section">
 			<h2 class="tm-section-title tm-color-primary mb-5">EDUCACIÓN</h2>
-			<table class="table table-bordered table-hover table-dark table-responsive">
-				<thead>
-					<tr class="bg-info">
-						<th scope="col" class="text-center">Nombre del Instituto</th>
-						<th scope="col" class="text-center">Nivel de Educación</th>
-						<th scope="col" class="text-center">Programa</th>
-						<th scope="col" class="text-center">Actualmente cursando</th>
-						<th scope="col" class="text-center">Fecha de Inicio</th>
-						<th scope="col" class="text-center">Fecha Final</th>
-						<th scope="col" class="text-center">Opciones</th>
-					</tr>
-				</thead>
-				<tbody>
-					{% if educacion %}
-					{% for educa in educacion %}
-					{% for empleado in empleados %}
-					{% if request.user.username == empleado.cedu_empleado %}
-					{% if empleado.pk == educa.empleado_id %}
-					<tr>
-						<td class="text-center">{{ educa.nom_instituto }}</td>
-						<td class="text-center">{{ educa.niv_educativo }}</td>
-						<td class="text-center">{{ educa.deta_educacion }}</td>
-						<td class="text-center">
-							{% if educa.cursa_educacion == False %}
-							No
-							{% else %}
-							Si
-							{% endif %}
-						</td>
-						<td class="text-center">{{ educa.fech_inicio_edu }}</td>
-						<td class="text-center">{{ educa.fech_fin_edu }}</td>
-						<td>
-							<div class="d-flex justify-content-center">
-								<button onclick="return abrir_modal('{% url 'crear_educacion' %}')" class="btn btn-outline-warning btn-sm" type="button" name="button">
-									<i class="fas fa-plus-circle"></i>
-								</button>
-								<button onclick="return abrir_modal('{% url 'actualizar_educacion' educa.pk %}')" class="btn btn-outline-primary btn-sm" type="button" name="button">
-									<i class="fas fa-edit"></i>
-								</button>
-								<!-- Boton de Eliminar -->
-								<button onclick="return abrir_modal('{% url 'eliminar_educacion' educa.pk %}')" class="btn btn-outline-danger btn-sm" type="button" name="button">
-									<i class="fas fa-trash-alt"></i>
-								</button>
-							</div>
-						</td>
-					</tr>
-					{% endif %}
-					{% endif %}
-					{% endfor %}
-					{% endfor %}
-					{% else %}
-					<tr>
-						<td colspan="6" class="text-center">No existen datos</td>
-						<td>
-							<div class="d-flex justify-content-center">
-								<button onclick="return abrir_modal('{% url 'crear_educacion' %}')" class="btn btn-outline-warning btn-sm" type="button" name="button">
-									<i class="fas fa-plus-circle"></i>
-								</button>
-							</div>
-						</td>
-					</tr>
-					{% endif %}
-				</tbody>
-			</table>
+			<div class="table-responsive">
+				<div class="d-flex justify-content-end">
+					<button onclick="return abrir_modal('{% url 'crear_educacion' %}')" class="btn btn-warning btn-md" type="button" name="button">
+						Crear <i class="fas fa-plus-circle"></i>
+					</button>
+				</div>
+				<hr>
+				<table class="table table-bordered table-hover table-dark">
+					<thead>
+						<tr class="bg-info">
+							<th scope="col" class="text-center">Nombre del Instituto</th>
+							<th scope="col" class="text-center">Nivel de Educación</th>
+							<th scope="col" class="text-center">Programa</th>
+							<th scope="col" class="text-center">Actualmente cursando</th>
+							<th scope="col" class="text-center">Fecha de Inicio</th>
+							<th scope="col" class="text-center">Fecha Final</th>
+							<th scope="col" class="text-center">Opciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for educa in educacion %}
+						{% if educa.empleado.cedu_empleado == request.user.username and educa.empleado.pk == educa.empleado_id %}
+						<tr>
+							<td class="text-center">{{ educa.nom_instituto }}</td>
+							<td class="text-center">{{ educa.niv_educativo }}</td>
+							<td class="text-center">{{ educa.deta_educacion }}</td>
+							<td class="text-center">
+								{% if educa.cursa_educacion == False %}
+								No
+								{% else %}
+								Si
+								{% endif %}
+							</td>
+							<td class="text-center">{{ educa.fech_inicio_edu }}</td>
+							<td class="text-center">{{ educa.fech_fin_edu }}</td>
+							<td>
+								<div class="d-flex justify-content-center">
+									<button onclick="return abrir_modal('{% url 'actualizar_educacion' educa.pk %}')" class="btn btn-outline-primary btn-sm" type="button" name="button">
+										<i class="fas fa-edit"></i>
+									</button>
+									<button onclick="return abrir_modal('{% url 'eliminar_educacion' educa.pk %}')" class="btn btn-outline-danger btn-sm" type="button" name="button">
+										<i class="fas fa-trash-alt"></i>
+									</button>
+								</div>
+							</td>
+						</tr>
+						{% endif %}
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>         
 </section>

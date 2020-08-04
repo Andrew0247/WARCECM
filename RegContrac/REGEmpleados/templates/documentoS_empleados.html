@@ -5,63 +5,53 @@
     <div class="col-lg tm-bg-white-transparent tm-section">
       <div class="row justify-content-md-center tm-section">
         <h2 class="tm-section-title tm-color-primary mb-5">DOCUMENTOS SOPORTE</h2>
-        <table class="table table-bordered table-hover table-dark">
-          <thead>
-            <tr class="bg-info">
-              <th scope="col" class="text-center">Tipo de Documento</th>
-              <th scope="col" class="text-center">Documento</th>
-              <th scope="col" class="text-center">Opciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% if documentos_soporte %}
-            {% for documentoS in documentos_soporte %}
-            {% for empleado in empleados %}
-            {% if request.user.username == empleado.cedu_empleado %}
-            {% if empleado.pk == documentoS.empleado_id %}
-            <tr>
-              <td class="text-center">{{ documentoS.tipo_documento }}</td>
-              <!-- <td class="text-center">{{ documentoS.documento_soporte }}</td> -->
-              <td class="text-center">
-                <div class="d-flex justify-content-center">
-                  <button class="btn btn-outline-info">
-                    <a href="{{ documentoS.documento_soporte.url }}"> <i class="far fa-eye"></i></a>
-                  </button>
-                </div>
-              </td>
-              <td>
-                <div class="d-flex justify-content-center">
-                  <button onclick="return abrir_modal('{% url 'crear_documentosoporte' %}')" class="btn btn-outline-warning btn-sm" type="button" name="button">
-                    <i class="fas fa-plus-circle"></i>
-                  </button>
-                  <button onclick="return abrir_modal('{% url 'actualizar_documentosoporte' documentoS.pk %}')" class="btn btn-outline-primary btn-sm" type="button" name="button">
-                    <i class="fas fa-edit"></i>
-                  </button>
-                  <!-- Boton de Eliminar -->
-                  <button onclick="return abrir_modal('{% url 'eliminar_documentosoporte' documentoS.pk %}')" class="btn btn-outline-danger btn-sm" type="button" name="button">
-                    <i class="fas fa-trash-alt"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            {% endfor %}
-            {% else %}
-            <tr>
-              <td colspan="2" class="text-center">No existen datos</td>
-              <td>
-                <div class="d-flex justify-content-center">
-                  <button onclick="return abrir_modal('{% url 'crear_documentosoporte' %}')" class="btn btn-outline-warning btn-sm" type="button" name="button">
-                    <i class="fas fa-plus-circle"></i>
-                  </button>
-                </div>
-              </td>
-            </tr>
-            {% endif %}
-          </tbody>
-        </table>                     
+        <div class="table-responsive">
+          <div class="d-flex justify-content-end">
+						<button onclick="return abrir_modal('{% url 'crear_documentosoporte' %}')" class="btn btn-warning btn-md" type="button" name="button">
+							Crear <i class="fas fa-plus-circle"></i>
+						</button>
+          </div>
+          <hr>
+          <table class="table table-lg table-bordered table-hover table-dark">
+            <thead>
+              <tr class="bg-info">
+                <th scope="col" class="text-center">Tipo de Documento</th>
+                <th scope="col" class="text-center">Documento</th>
+                <th scope="col" class="text-center">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for documentoS in documentos_soporte %}
+              {% if documentoS.empleado.cedu_empleado == request.user.username and documentoS.empleado.pk == documentoS.empleado_id %}
+              <tr>
+                <td class="text-center">{{ documentoS.tipo_documento }}</td>
+                <td class="text-center">
+                  <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-info">
+                      <a href="{{ documentoS.documento_soporte.url }}"> <i class="far fa-eye"></i></a>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-center">
+                    <button onclick="return abrir_modal('{% url 'crear_documentosoporte' %}')" class="btn btn-outline-warning btn-sm" type="button" name="button">
+                      <i class="fas fa-plus-circle"></i>
+                    </button>
+                    <button onclick="return abrir_modal('{% url 'actualizar_documentosoporte' documentoS.pk %}')" class="btn btn-outline-primary btn-sm" type="button" name="button">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <!-- Boton de Eliminar -->
+                    <button onclick="return abrir_modal('{% url 'eliminar_documentosoporte' documentoS.pk %}')" class="btn btn-outline-danger btn-sm" type="button" name="button">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>                     
+        </div>
       </div>    
     </div>
   </section>

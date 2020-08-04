@@ -26,7 +26,7 @@ urlpatterns = [
     path('actualizar_documentosoporte_jefe/<int:pk>', views.ActualizarDocumentoSoporteJefe.as_view() , name="actualizar_documentosoporte_jefe"),
     path('eliminar_documentosoporte_jefe/<int:pk>', views.EliminarDocumentoSoporteJefe.as_view() , name="eliminar_documentosoporte_jefe"),
     path('listar_valoracion_jefe/', views.ValoracionJefeList , name="listar_valoracion_jefe"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,48 +4,53 @@
 	<section id="valoracion" class="row tm-section">
 		<div class="col-lg tm-bg-white-transparent tm-section">
 			<div class="row justify-content-md-center tm-section">
-				<h2 class="tm-section-title tm-color-primary mb-5">VALORACION
-					<button onclick="return abrir_modal('{% url 'crear_valoracion' %}')" class="btn btn-outline-warning btn-sm" type="button" name="button">
-						<i class="fas fa-plus-circle"></i>
-					</button>
-				</h2>
-				
-				<table class="table table-bordered table-hover table-dark">
-					<thead>
-						<tr class="bg-info">
-							<th scope="col" class="text-center">Empleado</th>
-							<th scope="col" class="text-center">Identificación</th>
-							<th scope="col" class="text-center">Valoración</th>
-							<th scope="col" class="text-center">Observación</th>
-							<th scope="col" class="text-center">Opciones</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% if valoraciones %}
-						{% for valora in valoraciones %}
-						{% for empleado in empleados1 %}
-						<tr>
-							<td class="text-center">{{ empleado.nom_empleado }}</td>
-							<td class="text-center">{{ empleado.cedu_empleado }}</td>
-							<td class="text-center">{{ valora.valoracion }}</td>
-							<td class="text-center">{{ valora.observacion }}</td>
-							<td>
-								<div class="d-flex justify-content-center">
-									<button onclick="return abrir_modal('{% url 'actualizar_valoracion' valora.pk %}')" class="btn btn-outline-primary btn-sm" type="button" name="button">
-											<i class="fas fa-edit"></i>
-									</button>
-								</div>
-							</td>
-						</tr>
-						{% endfor %}
-						{% endfor %}
-						{% else %}
-						<tr>
-							<td colspan="2" class="text-center">No existen datos</td>
-						</tr>
-						{% endif %}
-					</tbody>
-				</table>
+				<h2 class="tm-section-title tm-color-primary mb-5">VALORACION</h2>
+				<div class="table-responsive">
+					<div class="d-flex justify-content-end">
+						<button onclick="return abrir_modal('{% url 'crear_valoracion' %}')" class="btn btn-warning btn-md" type="button" name="button">
+							Crear<i class="fas fa-plus-circle"></i>
+						</button>
+					</div>
+					<hr>
+					<table class="table table-bordered table-hover table-dark">
+						<thead>
+							<tr class="bg-info">
+								<th scope="col" class="text-center">Empleado</th>
+								<th scope="col" class="text-center">Identificacion del Empleado</th>
+								<th scope="col" class="text-center">Valoracion</th>
+								<th scope="col" class="text-center">Observación</th>
+								<th scope="col" class="text-center">Opciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% if valoraciones %}
+							{% for valora in valoraciones %}
+							{% for empleado in empleados1 %}
+							{% if empleado.pk == valora.empleado_id %}
+							<tr>
+								<td class="text-center">{{ empleado.nom_empleado }}</td>
+								<td class="text-center">{{ empleado.cedu_empleado }}</td>
+								<td class="text-center">{{ valora.valoracion }}</td>
+								<td class="text-center">{{ valora.observacion }}</td>
+								<td>
+									<div class="d-flex justify-content-center">
+										<button onclick="return abrir_modal('{% url 'actualizar_valoracion' valora.pk %}')" class="btn btn-outline-primary btn-sm btn-block" type="button" name="button">
+										<i class="fas fa-edit"></i>
+										</button>
+									</div>
+								</td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+							{% endfor %}
+							{% else %}
+							<tr>
+								<td colspan="3" class="text-center">No existen datos</td>
+							</tr>
+							{% endif %}
+						</tbody>
+					</table>
+				</div>
 			</div>                       
 		</div>
 	</section>

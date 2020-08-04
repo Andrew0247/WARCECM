@@ -5,34 +5,26 @@
 		<div class="col-lg tm-bg-white-transparent tm-section">
 			<div class="row justify-content-md-center tm-section">
 				<h2 class="tm-section-title tm-color-primary mb-5">VALORACION</h2>
-				<table class="table table-bordered table-hover table-dark">
-					<thead>
-						<tr class="bg-info">
-							<th scope="col" class="text-center">Valoracion</th>
-							<th scope="col" class="text-center">Observación</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% if valoraciones %}
-						{% for valora in valoraciones %}
-						{% for empleado in empleados %}
-						{% if request.user.username == empleado.cedu_empleado %}
-						{% if empleado.pk == valora.empleado_id %}
-						<tr>
-							<td class="text-center">{{ valora.valoracion }}</td>
-							<td class="text-center">{{ valora.observacion }}</td>
-						</tr>
-						{% endif %}
-						{% endif %}
-						{% endfor %}
-						{% endfor %}
-						{% else %}
-						<tr>
-							<td colspan="2" class="text-center">No existen datos</td>
-						</tr>
-						{% endif %}
-					</tbody>
-				</table>
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover table-dark">
+						<thead>
+							<tr class="bg-info">
+								<th scope="col" class="text-center">Valoracion</th>
+								<th scope="col" class="text-center">Observación</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for valora in valoraciones %}
+							{% if valora.empleado.cedu_empleado == request.user.username and valora.empleado.pk == valora.empleado_id %}
+							<tr>
+								<td class="text-center">{{ valora.valoracion }}</td>
+								<td class="text-center">{{ valora.observacion }}</td>
+							</tr>
+							{% endif %}
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 			</div>                       
 		</div>
 	</section>

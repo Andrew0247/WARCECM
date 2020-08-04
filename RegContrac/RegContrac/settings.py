@@ -24,9 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n1gq86i7&lw+!_)6za9pdh4@_vpzj+p6c9i((wl)yj@906lc_i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True 
+DEBUG = True
+# DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.105', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # 'django.contrib.sites',
+    'mod_wsgi.server',
     'bootstrap4',
     'bootstrap_modal_forms',
     'REGEmpleados',
     'LRUsuarios',
     'REGContracEx',
     'REGJefes',
+    'OPS',
 ]
 
 MIDDLEWARE = [
@@ -130,17 +133,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = "C:/Users/57323/Desktop/Practica/ProyectoDjango/RegContrac/static"
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    os.path.join(BASE_DIR, 'Bootstrap'),
-    ("portafolio", "/Desktop/ProyectoDjango/RegContrac/Portafolio"), # Configure your path to add the "Portafolio" folder to the static files
+    # os.path.join(BASE_DIR, "static"),
+    # os.path.join(BASE_DIR, "Bootstrap"),
+    # os.path.join(BASE_DIR, "Portafolio"),
+    "C:/Users/57323/Desktop/Practica/ProyectoDjango/RegContrac/Bootstrap",
+    "C:/Users/57323/Desktop/Practica/ProyectoDjango/RegContrac/Portafolio",
 ]
 
 
 # Configuración MEDIA_ROOT y MEDIA_URL
-MEDIA_ROOT = os.path.join(BASE_DIR, 'archivos')
+MEDIA_ROOT = "C:/Users/57323/Desktop/Practica/ProyectoDjango/RegContrac/archivos"
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'archivos')
 MEDIA_URL = '/archivos/'
 
 
@@ -150,5 +157,5 @@ EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_USE_TLS=True
 EMAIL_PORT=587
-EMAIL_HOST_USER="" # Set up your email username
-EMAIL_HOST_PASSWORD="" # Set up your email password
+EMAIL_HOST_USER="bricea881@gmail.com"
+EMAIL_HOST_PASSWORD="amoamifamilia0202"

@@ -20,14 +20,17 @@ class Empleado(models.Model):
 # ========== para crear una sola tabla que junta los atributos de todas las 3 tablas ==========
 class Contratacion(models.Model):
     empleado=models.OneToOneField(Empleado, null=True, blank=True, on_delete=models.CASCADE)
-    cargo_empleado=models.CharField(max_length=50, verbose_name="Cargo")
-    tipo_contrato=models.CharField(max_length=50, verbose_name="Tipo de Contrato")
+    objeto_contrato=models.CharField(max_length=80, verbose_name="Objeto del Contrato")
+    clase_contrato=models.CharField(max_length=80, verbose_name="Clase de Contrato")
+    valor_contrato=models.CharField(max_length=10, verbose_name="Valor del Contrato")
     contrato_doc=models.FileField(upload_to='contratos', verbose_name="Contrato")
+    dura_contrato=models.IntegerField(verbose_name="Duración del Contrato")
     fech_inicio_contrato=models.DateField(verbose_name="Fecha de Inicio")
     fech_fin_contrato=models.DateField(verbose_name="Fecha Final")
+    supervisor=models.CharField(max_length=80, verbose_name="Supervisor")
 
     def __str__(self):
-       return self.cargo_empleado
+       return self.objeto_contrato
 
 class Educacion(models.Model):
     empleado=models.ForeignKey(Empleado, null=True, blank=True, on_delete=models.CASCADE)

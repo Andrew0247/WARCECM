@@ -45,7 +45,7 @@ class ActualizarJefe(BSModalUpdateView):
 
 def ContratacionJefeList(request):
     empleados = Jefe.objects.all()
-    contracion = Contratacion.objects.all()
+    contracion = Contratacion.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'contratacion':contracion}
     return render(request,"contratacion_jefes.html", contexto)
 
@@ -62,7 +62,7 @@ class ActualizarContratacionJefe(BSModalUpdateView):
 
 def EducacionJefeList(request):
     empleados = Jefe.objects.all()
-    educacion = Educacion.objects.all()
+    educacion = Educacion.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'educacion':educacion}
     return render(request,"educacion_jefes.html", contexto)
 
@@ -86,7 +86,7 @@ class EliminarEducacionJefe(BSModalDeleteView):
 #======= Añadir el Delete para Educacion, Experiencia y Documentos Soporte ===========
 def ExperienciaJefeList(request):
     empleados = Jefe.objects.all()
-    experiencia = Experiencia_Laboral.objects.all()
+    experiencia = Experiencia_Laboral.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'experiencia_labo':experiencia}
     return render(request,"experiencia_jefes.html", contexto)
 
@@ -109,7 +109,7 @@ class EliminarExperienciaJefe(BSModalDeleteView):
 
 def DocumentoSoporteJefeList(request):
     empleados = Jefe.objects.all()
-    documentoS = Documentos_Soporte.objects.all()
+    documentoS = Documentos_Soporte.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'documentos_soporte':documentoS}
     return render(request,"documentoS_jefes.html", contexto)
 

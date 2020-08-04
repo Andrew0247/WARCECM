@@ -1,0 +1,117 @@
+<!-- 
+###########################################
+########### Author Andres B.R. ############
+###########      GuiHub        ############
+###### https://github.com/Andrew0247 ######
+########################################### -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>OPS</title>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/all.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/contrato-externo-estilo.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/ops-estilos.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/slick/slick.css' %}"/>    
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/slick/slick-theme.css' %}"/>    
+    <link rel="stylesheet" type="text/css" href="{% static 'portafolio/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />  
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'portafolio/js/jquery.singlePageNav.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'portafolio/js/parallax.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'portafolio/slick/slick.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'portafolio/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'portafolio/js/jquery.dataTables.min.js' %}"></script>
+  </head>
+
+  <body>
+    <div id="cuerpo-pag">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark tm-bg-black-transparent" >
+                <div id="hd">
+                    <img class="logo" src="{% static 'portafolio/img/img-ini-reg-emp.png' %}" alt="My image">
+                    <h2>Nuestro Equipo De Contratistas - Nuestra Esencia</h2>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="items">
+                            <a href="http://www.santiago-putumayo.gov.co/" class="nav-link">
+                                <span class="d-inline-block mr-3">Volver</span>
+                                <span class="d-inline-block tm-white-rect"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="contenido">
+            <div
+                class="parallax-window"
+                data-parallax="scroll"
+                data-image-src="{% static 'portafolio/img/Fondo-empleados.jpeg' %}">
+                <div id="contenedor1" class="container">
+                    <section id="section-con">
+                        <div id="tb-ops" class="table-responsive">
+                            <table class="table table-bordered table-hover tb-ops">
+                                <thead>
+                                    <tr class="table-primary">
+                                        <th scope="col" class="text-center">Nombre</th>
+                                        <th scope="col" class="text-center">Apellidos</th>
+                                        <th scope="col" class="text-center">Identificación</th>
+                                        <th scope="col" class="text-center">Valor del Contrato</th>
+                                        <th scope="col" class="text-center">Duracion del Contrato</th>
+                                        <th scope="col" class="text-center">Objeto del Contrato</th>
+                                        <th scope="col" class="text-center">Clase de Contrato</th>
+                                        <th scope="col" class="text-center">Supervisor</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% if empleados %}
+                                    {% if contratacion %}
+                                    {% for empleado in empleados %}
+                                    {% for contrata in contratacion %}
+                                    {% if empleado.pk == contrata.empleado_id %}
+                                    <tr class="table-secondary">
+                                        <th class="text-center">{{ empleado.nom_empleado }}</th>
+                                        <th class="text-center">{{ empleado.ape_empleado }}</th>
+                                        <th class="text-center">{{ empleado.cedu_empleado }}</th>
+                                        <th class="text-center">{{ contrata.valor_contrato }}</th>
+                                        <th class="text-center">{{ contrata.dura_contrato }}</th>
+                                        <th class="text-center">{{ contrata.objeto_contrato }}</th>
+                                        <th class="text-center">{{ contrata.clase_contrato }}</th>
+                                        <th class="text-center">{{ contrata.supervisor }} </th>
+                                    </tr>
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% endfor %}
+                                    {% endif %}
+                                    {% endif %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <footer class="text-center text-white small">
+            <section id="bs-fo">
+                <p class="mb--0 mb-2">Copyright 2020 OPS</p>
+                <p class="mb-0">
+                    <a rel="nofollow" href="http://www.santiago-putumayo.gov.co/" class="creador-link" id="cl-2">Alcaldia Santiago Putumayo</a>
+                </p>
+                <a rel="nofollow" href="https://github.com/Andrew0247" target="_blank" class="creador-link-2" id="cl-1">Creado por Andrés B.R.</a>
+            </section>
+        </footer>
+    </div>
+  </body>
+</html>

@@ -15,11 +15,12 @@ class Contratante(models.Model):
 
 class Contratos_Externos(models.Model):
     contratante=models.ForeignKey(Contratante, null=True, blank=True, on_delete=models.CASCADE)
-    tipo_contrato=models.CharField(max_length=50, verbose_name="Tipo de Contrato")
+    clase_contrato=models.CharField(max_length=50, verbose_name="Tipo de Contrato")
     objeto_contrato=models.CharField(max_length=50, verbose_name="Objeto Del Contrato")
     doc_contrato=models.FileField(upload_to='contratos_externos', verbose_name="Documento")
     fech_inicio_contrato=models.DateField(verbose_name="Fecha de Inicio")
     fech_fin_contrato=models.DateField(verbose_name="Fecha Final")
+    supervisor=models.CharField(max_length=80 ,verbose_name="Supervisor")
 
     def __str__(self):
         return "{} {}".format(self.tipo_contrato,self.objeto_contrato)

@@ -14,7 +14,7 @@ urlpatterns = [
     path('crear_contrato_externo/', views.CrearContratoExterno.as_view() , name="crear_contrato_externo"),
     path('actualizar_contrato_externo/<int:pk>', views.ActualizarContratoExterno.as_view() , name="actualizar_contrato_externo"),
     path('eliminar_contrato_externo/<int:pk>', views.EliminarContratoExterno.as_view() , name="eliminar_contrato_externo"),
-]
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

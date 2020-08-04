@@ -46,12 +46,8 @@ class ActualizarEmpleado(BSModalUpdateView):
 
 def ContratacionList(request):
     empleados = Empleado.objects.all()
-    contracion = Contratacion.objects.all()
-    # for emple in empleados:
-    #     user = User.objects.get(username=emple.cedu_empleado)
-    #     if user.get_all_permissions():
-    #         if user.has_perms(['REGEmpleados.view_contratacion']):
-    contexto = {'empleados':empleados,'contratacion':contracion}
+    contrataciones = Contratacion.objects.all().select_related('empleado')
+    contexto = {'empleados':empleados,'contratacion':contrataciones}
     return render(request,"contratacion_empleados.html", contexto)
 
 class CrearContratacion(BSModalCreateView):
@@ -67,7 +63,7 @@ class ActualizarContratacion(BSModalUpdateView):
 
 def EducacionList(request):
     empleados = Empleado.objects.all()
-    educacion = Educacion.objects.all()
+    educacion = Educacion.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'educacion':educacion}
     return render(request,"educacion_empleados.html", contexto)
 
@@ -91,7 +87,7 @@ class EliminarEducacion(BSModalDeleteView):
 #======= Añadir el Delete para Educacion, Experiencia y Documentos Soporte ===========
 def ExperienciaList(request):
     empleados = Empleado.objects.all()
-    experiencia = Experiencia_Laboral.objects.all()
+    experiencia = Experiencia_Laboral.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'experiencia_labo':experiencia}
     return render(request,"experiencia_empleados.html", contexto)
 
@@ -114,7 +110,7 @@ class EliminarExperiencia(BSModalDeleteView):
 
 def DocumentoSoporteList(request):
     empleados = Empleado.objects.all()
-    documentoS = Documentos_Soporte.objects.all()
+    documentoS = Documentos_Soporte.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'documentos_soporte':documentoS}
     return render(request,"documentoS_empleados.html", contexto)
 
@@ -137,17 +133,17 @@ class EliminarDocumentoSoporte(BSModalDeleteView):
 
 def ValoracionList(request):
     empleados = Empleado.objects.all()
-    valora = Valoracion.objects.all()
+    valora = Valoracion.objects.all().select_related('empleado')
     contexto = {'empleados':empleados,'valoraciones':valora}
     return render(request,"valoracion_empleados.html", contexto)
 
 class CrearValoracion(BSModalCreateView):
-    template_name='valoracion.html'
+    template_name='valoracion_jef.html'
     form_class=ValoracionForm
     success_url=reverse_lazy('listar_valoracion_jefe')
 
 class ActualizarValoracion(BSModalUpdateView):
     model = Valoracion
-    template_name='valoracion.html'
+    template_name='valoracion_jef.html'
     form_class=ValoracionForm
     success_url=reverse_lazy('listar_valoracion_jefe')

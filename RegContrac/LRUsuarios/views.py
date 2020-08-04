@@ -55,7 +55,7 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 do_login(request, user)
-                return redirect('/usuarios/')
+                return redirect('usuario')
 
     elif 'admins' in request.POST:
         form2 = UserAdminForm(data=request.POST)
@@ -65,10 +65,10 @@ def login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 do_login(request, user)
-                return redirect('/usuarios/')
+                return redirect('usuario')
 
     return render(request, "login.html", {'form': form,'form2':form2})
 
 def logout(request):
     do_logout(request)
-    return redirect('/usuarios/')
+    return redirect('usuario')

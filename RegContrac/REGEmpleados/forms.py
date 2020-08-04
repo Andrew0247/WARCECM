@@ -34,7 +34,7 @@ class Empleado2Form(BSModalForm):
 class ContratacionForm(BSModalForm):
     class Meta:
         model = Contratacion
-        fields = ['empleado','cargo_empleado','tipo_contrato','contrato_doc', 'fech_inicio_contrato', 'fech_fin_contrato']
+        fields = ['empleado','objeto_contrato','clase_contrato','valor_contrato', 'contrato_doc', 'dura_contrato', 'fech_inicio_contrato', 'fech_fin_contrato', 'supervisor']
     
     def __init__(self, *args, **kwargs):
         super(ContratacionForm, self).__init__(*args, **kwargs)

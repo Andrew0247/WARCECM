@@ -15,10 +15,10 @@ class ContratanteAdmin(admin.ModelAdmin):
     list_filter=('nom_contratante','cedu_contratante')
 
 class ContratosExternosAdmin(admin.ModelAdmin):
-    list_display=("tipo_contrato","objeto_contrato","doc_contrato", "fech_inicio_contrato", "fech_fin_contrato",)
-    search_fields=("tipo_contrato","objeto_contrato",)
+    list_display=("contratante", "clase_contrato","objeto_contrato","doc_contrato", "fech_inicio_contrato", "fech_fin_contrato", "supervisor",)
+    search_fields=("clase_contrato","objeto_contrato",)
     date_hierarchy="fech_inicio_contrato"
-    list_filter = ('fech_fin_contrato','tipo_contrato','objeto_contrato')
+    list_filter = ('contratante','fech_fin_contrato','clase_contrato','objeto_contrato')
 
 admin.site.register(Contratante, ContratanteAdmin)
 admin.site.register(Contratos_Externos, ContratosExternosAdmin)

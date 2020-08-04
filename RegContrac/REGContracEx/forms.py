@@ -18,7 +18,7 @@ class ContratanteForm(BSModalForm):
 class ContratosExternosForm(BSModalForm):
     class Meta:
         model = Contratos_Externos
-        fields = ['contratante','tipo_contrato','objeto_contrato','doc_contrato', 'fech_inicio_contrato', 'fech_fin_contrato']
+        fields = ['contratante','clase_contrato','objeto_contrato','doc_contrato', 'fech_inicio_contrato', 'fech_fin_contrato', 'supervisor']
     
     def __init__(self, *args, **kwargs):
         super(ContratosExternosForm, self).__init__(*args, **kwargs)
